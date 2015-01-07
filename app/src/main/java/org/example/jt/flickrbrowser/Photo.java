@@ -1,9 +1,6 @@
 package org.example.jt.flickrbrowser;
 
-import android.util.Log;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 
 /**
  * Created by jt on 12/31/14.
@@ -15,29 +12,16 @@ public class Photo {
     private String mTitle;
     private String mLink;
     private String mImage;
+    private String mTags;
     private GetFlickrJsonData jsonData;
 
-    public Photo(String url) {
-        jsonData = new GetFlickrJsonData(url);
-        //jsonData.execute();
-        setItemArray("items");
-        test();
-    }
-
-    public void setItemArray(String name){
-        try {
-            mItems = jsonData.getJSON().getJSONArray(name);
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void test(){
-        try {
-            Log.d("BILBO", mItems.getJSONObject(1).getString("author"));
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
+    public Photo(String mTitle, String mAuthor, String mAuthorId, String mLink, String mTags, String mImage) {
+        this.mAuthor = mAuthor;
+        this.mAuthorId = mAuthorId;
+        this.mTitle = mTitle;
+        this.mLink = mLink;
+        this.mTags = mTags;
+        this.mImage = mImage;
     }
 
     public String getmAuthor() {
@@ -58,6 +42,10 @@ public class Photo {
 
     public String getmImage() {
         return mImage;
+    }
+
+    public String getmTags() {
+        return mTags;
     }
 
     @Override
